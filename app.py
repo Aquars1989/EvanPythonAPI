@@ -7,7 +7,7 @@ import scrape_Reddit
 app = Flask(__name__)
 CORS(app)
 def main():
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)
 
 @app.route('/api/scrape_leetcode', methods=['GET'])
 def scrape_leetcode():
