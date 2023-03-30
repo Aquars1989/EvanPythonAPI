@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
+import json
 
 def main():
     print(getData())
@@ -19,8 +20,9 @@ def getData():
             continue
         val=[tds[0].text,tds[2].text,tds[3].text,tds[4].text]
         data.append(val)
-    df=pd.DataFrame(data,columns=["name","price","change","changeRate"]).to_json(orient='records')
-    res= {"code":"0000","message":"Ok","data": df}
+    dataRes=pd.DataFrame(data,columns=["name","price","change","changeRate"]).to_json(orient='records')
+    jdataRes = json.loads(dataRes)
+    res= {"code":"0000","message":"Ok","data": jdataRes}
     return res
 
 if __name__ == "__main__":
