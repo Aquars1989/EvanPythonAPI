@@ -14,9 +14,9 @@ def getData(word,skip,size):
 
         data=[]
         for r in response["result"]:
-            data.append([r["headline"],r["url"],r["mappedSection"],r["firstPublishDate"]])
-        df=pd.DataFrame(data,columns=["headline","url","category","datetime"])
-        dataRes = df[["headline","url","category","datetime"]].to_json(orient='records')
+            data.append([r["headline"],r["url"],r["mappedSection"],r["firstPublishDate"],r["lastPublishDate"]])
+        df=pd.DataFrame(data,columns=["headline","url","category","firstPublish","lastPublish"])
+        dataRes = df[["headline","url","category","firstPublish","lastPublish"]].to_json(orient='records')
         jdataRes = json.loads(dataRes)
         res={"code":"0000","message":"Ok","data": jdataRes}
         return res
