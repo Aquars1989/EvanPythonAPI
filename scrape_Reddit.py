@@ -1,11 +1,9 @@
 import requests
 from bs4 import BeautifulSoup as bs4
-import click
 import pandas as pd
 from fake_useragent import UserAgent
 import json
 
-@click.command()
 def main():
     print(getData('technology'))
     pass
