@@ -10,9 +10,11 @@ def getData(word):
     try:
         user_agent=UserAgent()
         cookie=access_secret_version('cookie_openart')
-        data={"prompt":word,"base_model":"runwayml/stable-diffusion-v1-5","version":1.5,"model":"stable_diffusion","width":768,"height":768,"image_num":1,"cfg_scale":7,"negative_prompt":"","steps":25,"sampler":"dpmsolver++","seed":""}
+        data={"prompt":word,"base_model":"runwayml/stable-diffusion-v1-5","version":1.5,"model":"stable_diffusion","width":512,"height":512,"image_num":1,"cfg_scale":7,"negative_prompt":"","steps":25,"sampler":"dpmsolver++","seed":""}
         response=requests.post('https://openart.ai/api/create/stable_diffusion', headers={ 'user-agent': user_agent.random ,'Cookie':cookie},data=data).json()
 
+        if "generation_history_id" not in response:
+            raise Exception(response["error"])
         historyId=response["generation_history_id"]
         url=""
         while url=="":
