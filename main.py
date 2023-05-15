@@ -50,11 +50,10 @@ def scrape_cnn():
     size = request.args.get('size', type=int ,default=10)
     return scrape_CNN.getData(word,skip,size)
 
-@app.route('/api/openart_agent', methods=['GET'])
-def openart_agent():
-    word = request.args.get('word', type=str ,default="")
-    return OpenArt_Agent.getData(word)
-
+#@app.route('/api/openart_agent', methods=['GET'])
+#def openart_agent():
+#    word = request.args.get('word', type=str ,default="")
+#    return OpenArt_Agent.getData(word)
 
 if __name__ == "__main__":
     main()
